@@ -8,7 +8,7 @@ function createHearts() {
     for (let i = 0; i < 50; i++) {
         const heart = document.createElement('div');
         heart.className = 'heart';
-        heart.innerHTML = ['💕', '💖', '💗', '💓', '💞'][Math.floor(Math.random() * 5)];
+        heart.innerHTML = ['�', '😁', '😄', '😃', '😆'][Math.floor(Math.random() * 5)];
         heart.style.left = Math.random() * 100 + '%';
         heart.style.top = Math.random() * 100 + '%';
         heart.style.animationDelay = Math.random() * 3 + 's';
@@ -23,7 +23,7 @@ function createConfetti() {
     for (let i = 0; i < 50; i++) {
         const confetti = document.createElement('div');
         confetti.className = 'confetti';
-        confetti.innerHTML = ['�', '😄', '😁', '😃', '💕'][Math.floor(Math.random() * 5)];
+        confetti.innerHTML = ['😂', '😄', '😁', '😃', '😆'][Math.floor(Math.random() * 5)];
         confetti.style.left = Math.random() * 100 + '%';
         confetti.style.top = '-10px';
         confetti.style.fontSize = Math.random() * 20 + 10 + 'px';
@@ -40,9 +40,28 @@ yesBtn.addEventListener('click', function() {
     createConfetti();
 });
 
-// NO button click - make it run away
+// NO button click - show message and make it run away
 noBtn.addEventListener('click', function(e) {
     e.preventDefault();
+    
+    // Show message "mujhe nhi pakad paoge"
+    const message = document.createElement('div');
+    message.textContent = 'Mujhe nhi pakad paoge! 😏';
+    message.style.position = 'fixed';
+    message.style.left = Math.random() * 80 + 10 + '%';
+    message.style.top = Math.random() * 80 + 10 + '%';
+    message.style.backgroundColor = '#ff6b9d';
+    message.style.color = 'white';
+    message.style.padding = '10px 20px';
+    message.style.borderRadius = '20px';
+    message.style.fontSize = '16px';
+    message.style.fontWeight = 'bold';
+    message.style.zIndex = '1000';
+    message.style.animation = 'fadeOut 2s forwards';
+    document.body.appendChild(message);
+    
+    // Remove message after animation
+    setTimeout(() => message.remove(), 2000);
     
     // Get random position
     const randomX = (Math.random() - 0.5) * 400;
